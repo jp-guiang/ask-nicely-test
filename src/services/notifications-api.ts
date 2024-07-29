@@ -13,3 +13,22 @@ export async function getNotifications(): Promise<NotificationModel[]> {
     return []
   }
 }
+
+export async function createToDo(notification) {
+  const body = { id: notification.id, action: 'TODO' }
+
+  try {
+    const response = await axios.post(
+      'https://testau.asknice.ly/api/v1/candidate-test/mock-action',
+      body,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    )
+    return response
+  } catch (error) {
+    console.error('Error', error)
+  }
+}

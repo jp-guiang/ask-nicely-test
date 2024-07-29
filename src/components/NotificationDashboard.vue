@@ -13,6 +13,9 @@ onMounted(async () => {
 
 <template>
   <div class="bg-gradient-to-b from-[#6b097a] to-[#274bdb]">
+    <header class="text-white text-center text-2xl border-b-2 border-white p-4">
+      <h1>Notifications</h1>
+    </header>
     <SingleNotification
       v-for="notification in notifications"
       :key="notification.id"

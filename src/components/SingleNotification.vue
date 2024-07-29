@@ -2,6 +2,7 @@
 import { defineProps, computed } from 'vue'
 import type { PropType } from 'vue'
 import type { NotificationModel } from '@/models/notification-model'
+import { createToDo } from '../services/notifications-api'
 
 const props = defineProps({
   notification: {
@@ -10,8 +11,11 @@ const props = defineProps({
 })
 
 const initials = computed(() => {
-  let initials = props.notification.author.match(/\b\w/g)?.join('') || ''
-  return initials
+  return props.notification.author.match(/\b\w/g)?.join('') || ''
+})
+
+const has_create_todo = computed(() => {
+  return props.notification.available_actions.includes('CREATE_TODO')
 })
 
 const dynamicBgColor = computed(() => {
@@ -20,10 +24,20 @@ const dynamicBgColor = computed(() => {
   const b = Math.floor(Math.random() * 256)
   return `rgb(${r}, ${g}, ${b})`
 })
+
+const callToDoApi = () => {
+  if (has_create_todo.value) {
+    createToDo(props.notification)
+  }
+}
 </script>
 
 <template>
-  <div class="text-white p-4 flex border-b-2 border-b-white/[.1]">
+  <div
+    class="text-white p-4 flex border-b-2 border-b-white/[.1]"
+    @click="callToDoApi"
+    :class="[has_create_todo ? 'cursor-pointer' : '', has_create_todo ? 'hover:ring' : '']"
+  >
     <div class="w-1/12 p-2 flex text-center items-center justify-around">
       <div class="p-2">
         <div v-if="notification.read" class="p-1 rounded-full bg-white"></div>
@@ -54,8 +68,8 @@ const dynamicBgColor = computed(() => {
           {{ notification.created }}
         </p>
       </div>
-      <p>
-        {{ notification.available_actions }}
+      <p v-if="has_create_todo">
+        {{ has_create_todo }}
       </p>
     </div>
   </div>
