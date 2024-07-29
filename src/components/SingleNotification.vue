@@ -17,11 +17,11 @@ const initials = computed(() => {
 
 <template>
   <div class="text-white p-4 flex border-b-2 border-b-white/[.1]">
-    <div class="w-1/12 p-2 flex text-center items-center">
+    <div class="w-1/12 p-2 flex text-center items-center justify-around">
       <div class="p-2">
         <div v-if="notification.read" class="p-1 rounded-full bg-white"></div>
       </div>
-      <div class="flex items-center justify-center">
+      <div class="w-12 h-12 bg-amber-300 flex items-center justify-center rounded-full">
         <p>
           {{ initials }}
         </p>
@@ -29,7 +29,7 @@ const initials = computed(() => {
     </div>
     <div class="w-full p-2 flex flex-wrap">
       <div class="w-full">
-        <h1 class="pb-4">
+        <h1 class="font-bold pb-4">
           {{ notification.title }}
         </h1>
         <p class="pb-4">
