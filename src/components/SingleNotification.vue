@@ -13,6 +13,13 @@ const initials = computed(() => {
   let initials = props.notification.author.match(/\b\w/g)?.join('') || ''
   return initials
 })
+
+const dynamicBgColor = computed(() => {
+  const r = Math.floor(Math.random() * 256)
+  const g = Math.floor(Math.random() * 256)
+  const b = Math.floor(Math.random() * 256)
+  return `rgb(${r}, ${g}, ${b})`
+})
 </script>
 
 <template>
@@ -21,7 +28,10 @@ const initials = computed(() => {
       <div class="p-2">
         <div v-if="notification.read" class="p-1 rounded-full bg-white"></div>
       </div>
-      <div class="w-12 h-12 bg-amber-300 flex items-center justify-center rounded-full">
+      <div
+        class="w-12 h-12 flex items-center justify-center rounded-full"
+        :style="{ backgroundColor: dynamicBgColor }"
+      >
         <p>
           {{ initials }}
         </p>
