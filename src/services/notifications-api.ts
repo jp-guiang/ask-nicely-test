@@ -6,8 +6,7 @@ export async function getNotifications(): Promise<NotificationModel[]> {
     const response = await axios.get(
       'https://testau.asknice.ly/api/v1/candidate-test/mock-notifications'
     )
-    console.log(response.data)
-    const data: NotificationModel[] = response.data
+    const data: NotificationModel[] = response.data.data
     return data
   } catch (error) {
     console.error('Error', error)
