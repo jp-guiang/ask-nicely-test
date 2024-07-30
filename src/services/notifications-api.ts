@@ -17,7 +17,7 @@ export async function getNotifications(): Promise<NotificationModel[]> {
   }
 }
 
-export async function createToDo(notification) {
+export async function createToDo(notification: NotificationModel) {
   const body = { id: notification.id, action: 'TODO' }
 
   try {
