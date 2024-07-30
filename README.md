@@ -65,11 +65,11 @@ notificationResponse  = [
 
 ## Personal Reflections/Notes
 
-This as my first time using typescript and using the Vue.js composition API. Previously, I was using the data model for Vue. This mean that I went slower than I usually would have since I pushed myself to learn something new. I didn't get to create as much tests as I wanted but I wanted to at least have one in for the service method. Ideally, I would've made tests for the components and service methods.
+This was my first time using Typescript and using the Vue.js composition API. Previously, I was using the data model for Vue. This meant that I went slower than I usually would have since I pushed myself to learn something new. I didn't get to create as much tests as I wanted but I wanted to at least have one for the service method. Ideally, I would've made tests for the components and service methods.
 
-Getting the functionality working was quite easy for be but I ended up spending too much time on styling, which ended up giving me less time to do tests. I should've gotten the functionality working, written tests and completed styling after.
+Getting the functionality working was quite easy for me but I ended up spending more time on styling, and gave me less time to do tests. I should've gotten the functionality working, written tests and completed styling after.
 
-The Create to do task to make the POST API call was a bit tricky. Initally, I was getting a CORS error and was not getting any response back. Then I added a header for the content-type and that resulted in getting a 400 as a response. Im not sure if my header was wrong or whether there was something wrong in the request body. Regardless, I added a cause to handle the API error.
+The `CREATE_TODO` task to make the POST API call was a bit tricky. Initally, I was getting a CORS error and was not getting any response back. Then I added a header to the request, for the content-type and that resulted in getting an error 400 as a response. I'm not sure if my header was wrong or whether there was something wrong in the request body. Regardless, I added a cause to handle the API error.
 
 ## Proposed improvements, solutions and features
 
